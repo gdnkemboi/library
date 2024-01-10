@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Library</title>
+</head>
+<body>
+    <div class="header">
+        <p class="logo">library</p>
+    </div>
+    <div class="main">
+        <button class="addBook">+Add book</button>
+
+        <div id="modal" class="addBookModal">
+            <div class="modalContent">
+                <form class="addBookForm">
+                    <input type="text" id="title" name="title" placeholder="Title"><br>
+                    <input type="text" id="author" name="author" placeholder="Author"><br>
+                    <input type="number" id="pages" name="pages" placeholder="Pages"><br>
+                    <label for="read">Have you read it?</label>
+                    <input type="checkbox" id="read" name="read"><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+        <div class="books">
+
+        </div>
+    </div>
+    <div class="footer">
+        Copyright &copy; Gideon Kemboi 2024
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

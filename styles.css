@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: Roboto, sans-serif;
+}
+
+.header {
+  background-color: #1f2937;
+  padding-left: 5%;
+}
+
+.logo {
+  font-size: 24px;
+  color: #f9faf8;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.addBook {
+  align-self: center;
+  border: 0;
+  margin: 30px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+.addBook:hover {
+  background-color: #dbeafe;
+}
+
+.addBookModal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  align-items: center;
+  justify-content: center;
+}
+
+.modalContent {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+}
+
+.books {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 100%;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 0;
+  position: relative;
+  bottom: 0;
+}
