@@ -123,62 +123,9 @@ form.addEventListener("submit", (event) => {
   const book = new Book(title, author, pages, read);
   addBookToLibrary(book);
 
-  for (let i = 0; i < myLibrary.length; i++) {
-    let myBook = document.createElement("tr");
-    let book = myLibrary[i];
-    let titles = [];
-
-    const bookDivs = document.querySelectorAll(".book");
-
-    bookDivs.forEach((bookDiv) => {
-      const titleTags = bookDiv.querySelectorAll(".title");
-
-      titleTags.forEach((titleTag) => {
-        titles.push(titleTag.textContent);
-      });
-    });
-
-    if (titles.includes(book.title)) {
-      continue;
-    }
-
-    myBook.classList.add("book", toCamelCase(book.title));
-
-    let bookTitle = document.createElement("td");
-    bookTitle.classList.add("title");
-    bookTitle.textContent = `${book.title}`;
-
-    let bookAuthor = document.createElement("td");
-    bookAuthor.textContent = `${book.author}`;
-
-    let bookPages = document.createElement("td");
-    bookPages.textContent = `${book.pages} pages`;
-
-    let bookReadStatus = document.createElement("td");
-    let bookReadStatusBtn = document.createElement("button");
-    bookReadStatus.appendChild(bookReadStatusBtn);
-    bookReadStatusBtn.classList.add(
-      "readStatusBtn",
-      toCamelCase(book.title),
-      book.read
-    );
-    bookReadStatusBtn.textContent = `${book.readStatus}`;
-
-    let removeBtnCell = document.createElement("td");
-    let removeBtn = document.createElement("button");
-    removeBtnCell.appendChild(removeBtn)
-    removeBtn.classList.add("removeBtn", toCamelCase(book.title));
-    removeBtn.textContent = "Remove";
-
-    myBook.appendChild(bookTitle);
-    myBook.appendChild(bookAuthor);
-    myBook.appendChild(bookPages);
-    myBook.appendChild(bookReadStatus);
-    myBook.appendChild(removeBtnCell);
-
-    books.appendChild(myBook);
-  }
-
+  books.innerHTML = ""
+  populateBooks()
+  
   form.reset();
   modal.style.display = "none";
 });
