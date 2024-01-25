@@ -1,4 +1,4 @@
-const myLibrary = [];
+const myLibrary = []
 
 class Book {
   constructor(title, author, pages, read) {
@@ -13,6 +13,10 @@ class Book {
     }
   }
 }
+
+const book1 = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
+const book2 = new Book("Harry Potter", "J.K. Rowling", 400, false);
+myLibrary.push(book1, book2);
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
@@ -86,6 +90,7 @@ function populateBooks() {
 
     let removeBtnCell = document.createElement("td");
     let removeBtn = document.createElement("button");
+    removeBtnCell.appendChild(removeBtn)
     removeBtn.classList.add("removeBtn", toCamelCase(book.title));
     removeBtn.textContent = "Remove";
 
@@ -205,8 +210,7 @@ document.addEventListener("click", (event) => {
       (book) => toCamelCase(book.title) === classesArray[1]
     );
     myLibrary.splice(bookToRemoveIndex, 1);
-    let bookDiv = document.querySelector("." + classesArray[1]);
-    books.removeChild(bookDiv);
+    books.innerHTML = ""
     populateBooks();
   }
 });
