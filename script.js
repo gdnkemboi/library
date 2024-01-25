@@ -12,9 +12,6 @@ class Book {
       this.readStatus = "Not read";
     }
   }
-  info() {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.readStatus}`;
-  }
 }
 
 function addBookToLibrary(book) {
@@ -46,11 +43,11 @@ window.addEventListener("click", (event) => {
 
 // Get the form element
 const form = document.querySelector(".addBookForm");
-const books = document.querySelector(".books");
+const books = document.querySelector("#books");
 
 function populateBooks() {
   for (let i = 0; i < myLibrary.length; i++) {
-    let myBook = document.createElement("div");
+    let myBook = document.createElement("tr");
     let book = myLibrary[i];
     let titles = [];
 
@@ -68,25 +65,26 @@ function populateBooks() {
     }
     myBook.classList.add("book", toCamelCase(book.title));
 
-    let bookTitle = document.createElement("p");
+    let bookTitle = document.createElement("td");
     bookTitle.textContent = `${book.title}`;
 
-    let bookAuthor = document.createElement("p");
+    let bookAuthor = document.createElement("td");
     bookAuthor.textContent = `${book.author}`;
 
-    let bookPages = document.createElement("p");
+    let bookPages = document.createElement("td");
     bookPages.textContent = `${book.pages} pages`;
 
-    let bookReadStatus = document.createElement("button");
-    bookReadStatus.classList.add(
+    let bookReadStatus = document.createElement("td");
+    let bookReadStatusBtn = document.createElement("button");
+    bookReadStatus.appendChild(bookReadStatusBtn);
+    bookReadStatusBtn.classList.add(
       "readStatusBtn",
       toCamelCase(book.title),
       book.read
     );
-    bookReadStatus.textContent = `${book.readStatus}`;
+    bookReadStatusBtn.textContent = `${book.readStatus}`;
 
-    let lineBreak = document.createElement("br");
-
+    let removeBtnCell = document.createElement("td");
     let removeBtn = document.createElement("button");
     removeBtn.classList.add("removeBtn", toCamelCase(book.title));
     removeBtn.textContent = "Remove";
@@ -95,8 +93,7 @@ function populateBooks() {
     myBook.appendChild(bookAuthor);
     myBook.appendChild(bookPages);
     myBook.appendChild(bookReadStatus);
-    myBook.appendChild(lineBreak);
-    myBook.appendChild(removeBtn);
+    myBook.appendChild(removeBtnCell);
 
     books.appendChild(myBook);
   }
@@ -122,7 +119,7 @@ form.addEventListener("submit", (event) => {
   addBookToLibrary(book);
 
   for (let i = 0; i < myLibrary.length; i++) {
-    let myBook = document.createElement("div");
+    let myBook = document.createElement("tr");
     let book = myLibrary[i];
     let titles = [];
 
@@ -142,27 +139,29 @@ form.addEventListener("submit", (event) => {
 
     myBook.classList.add("book", toCamelCase(book.title));
 
-    let bookTitle = document.createElement("p");
+    let bookTitle = document.createElement("td");
     bookTitle.classList.add("title");
     bookTitle.textContent = `${book.title}`;
 
-    let bookAuthor = document.createElement("p");
+    let bookAuthor = document.createElement("td");
     bookAuthor.textContent = `${book.author}`;
 
-    let bookPages = document.createElement("p");
+    let bookPages = document.createElement("td");
     bookPages.textContent = `${book.pages} pages`;
 
-    let bookReadStatus = document.createElement("button");
-    bookReadStatus.classList.add(
+    let bookReadStatus = document.createElement("td");
+    let bookReadStatusBtn = document.createElement("button");
+    bookReadStatus.appendChild(bookReadStatusBtn);
+    bookReadStatusBtn.classList.add(
       "readStatusBtn",
       toCamelCase(book.title),
       book.read
     );
-    bookReadStatus.textContent = `${book.readStatus}`;
+    bookReadStatusBtn.textContent = `${book.readStatus}`;
 
-    let lineBreak = document.createElement("br");
-
+    let removeBtnCell = document.createElement("td");
     let removeBtn = document.createElement("button");
+    removeBtnCell.appendChild(removeBtn)
     removeBtn.classList.add("removeBtn", toCamelCase(book.title));
     removeBtn.textContent = "Remove";
 
@@ -170,8 +169,7 @@ form.addEventListener("submit", (event) => {
     myBook.appendChild(bookAuthor);
     myBook.appendChild(bookPages);
     myBook.appendChild(bookReadStatus);
-    myBook.appendChild(lineBreak);
-    myBook.appendChild(removeBtn);
+    myBook.appendChild(removeBtnCell);
 
     books.appendChild(myBook);
   }

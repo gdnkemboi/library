@@ -64,10 +64,33 @@ body {
   max-width: 600px;
 }
 
-.books {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  height: 100%;
+.bookTable {
+  border-collapse: collapse;
+  margin: 25px 12%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.bookTable thead tr {
+  background-color: #009879;
+  color: #ffffff;
+}
+
+.bookTable th,
+.bookTable td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.bookTable tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.bookTable tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.bookTable tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
 }
 
 .footer {
