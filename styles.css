@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100%;
@@ -42,16 +46,16 @@ body {
   background-color: #dbeafe;
 }
 
-.addBookModal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
+#modal {
+  display: none;
+  position: fixed;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
   align-items: center;
   justify-content: center;
 }
@@ -60,8 +64,56 @@ body {
   background-color: #fefefe;
   padding: 20px;
   border: 1px solid #888;
+  border-radius: 10px;
   width: 80%;
-  max-width: 600px;
+  max-width: 400px;
+}
+
+.addBookForm {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.addBookForm input[type="text"],
+.addBookForm input[type="number"] {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.addBookForm input[type="text"]:focus,
+.addBookForm input[type="number"]:focus {
+  outline: none;
+  border-color: #1f2937;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+.readCheck {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.readCheck label {
+  font-size: 1rem;
+  color: #333;
+}
+
+.addBookForm input[type="submit"] {
+  padding: 0.8rem;
+  background-color: #009879;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.addBookForm input[type="submit"]:hover {
+  background-color: #1f2937;
 }
 
 .bookTable {
@@ -91,6 +143,71 @@ body {
 
 .bookTable tbody tr:last-of-type {
   border-bottom: 2px solid #009879;
+}
+
+.removeBtn {
+  background-color: #ffebee;
+  color: #b71c1c;
+  border: 2px solid #ef9a9a;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.removeBtn:hover {
+  background-color: #ffcdd2;
+  color: #d32f2f;
+  border-color: #e57373;
+}
+
+.removeBtn::after {
+  content: "✕";
+  font-size: 1.1em;
+}
+
+.readStatusBtn {
+  background-color: #1f2937;
+  color: white;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.readStatusBtn.true {
+  background-color: #009879;
+  color: white;
+}
+
+.readStatusBtn:hover {
+  transform: translateY(-1px);
+}
+
+.readStatusBtn:active {
+  transform: translateY(0);
+}
+
+.readStatusBtn:focus {
+  outline: none;
+}
+
+.readStatusBtn::after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: currentColor;
+  opacity: 0.7;
 }
 
 .footer {
